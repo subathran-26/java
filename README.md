@@ -1,2 +1,1 @@
-# java
-addon
+JAVA ADDON CLASS
