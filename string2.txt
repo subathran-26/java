@@ -1,0 +1,19 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        System.out.println("enter a string");
+        String str1=input.nextLine();
+        String str2=new String("Hello");
+        
+        if(str1 == str2)
+        {
+        System.out.println("same");
+        }
+        else
+        {
+        System.out.println("different");
+        }
+        
+    }
+}
