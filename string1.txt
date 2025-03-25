@@ -1,0 +1,11 @@
+class Main {
+    public static void main(String[] args) {
+        //using literal //String Pool
+        String s1="Hello";
+        //using new keyword //Heap Memory
+        String s2=new String("Hello");    
+        System.out.println("s1 == s2");
+        System.out.println(s1.equals(s2));
+        
+    }
+}
