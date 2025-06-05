@@ -18,3 +18,20 @@ class Main {
         }
     }
 }
+--------------------------------------------------------------------------------------
+    2)//bus ticket
+class Main {
+    public static void main(String[]args)
+    {
+        int age=20;
+        String g="female";
+        if(age<18 || g=="female")
+        {
+        System.out.println("ticket is free");
+        }
+        else
+        {
+            System.out.println("it is not free");
+        }
+    }
+}
