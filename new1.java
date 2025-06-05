@@ -35,3 +35,45 @@ class Main {
         }
     }
 }
+-------------------------------------------------------------------------------------------------
+    3)//km sum
+class Main {
+    public static void main(String[]args)
+    {
+     int km=1;
+     switch(km)
+     {
+         case 1:{
+             System.out.println("rupee 100");
+             break;
+         }
+         case 2:{
+             System.out.println("rupee 200");
+             break;
+         }
+          case 3:{
+             System.out.println("rupee 300");
+             break;
+         } case 4:{
+             System.out.println("rupee 400");
+             break;
+         } case 5:{
+             System.out.println("rupee 500");
+             break;
+         } case 6:{
+             System.out.println("rupee 600");
+             break;
+         } case 7:{
+             System.out.println("rupee 700");
+             break;
+         } case 8:{
+             System.out.println("rupee 800");
+             break;
+         }
+         default:{
+             System.out.println("not available");
+             break;
+         }
+     }
+    }
+}
