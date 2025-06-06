@@ -40,3 +40,58 @@ import java.util.Scanner;
      
 }
 }
+3)
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String result = "";
+        int i = 0;
+        int lastSpace = -1;
+        
+        // Find last space position
+        try {
+            while(true) {
+                if(str.charAt(i) == ' ') {
+                    lastSpace = i;
+                }
+                i++;
+            }
+        } catch(StringIndexOutOfBoundsException e) {}
+        
+        // Print last word first
+        for(i = lastSpace + 1; ; i++) {
+            try {
+                result = result + str.charAt(i);
+            } catch(StringIndexOutOfBoundsException e) {
+                break;
+            }
+        }
+        
+        // Add space
+        result = result + " ";
+        
+        // Print first word
+        for(i = 0; i < lastSpace; i++) {
+            result = result + str.charAt(i);
+        }
+        
+        System.out.print(result);
+    }
+}
+4)
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+      String str="I Love Zoho";
+      String str1[]=str.split(" ");
+      System.out.println(str1[0]);
+      for(int i=str1.length-1;i>=0;i--)
+      {
+          System.out.print(str1[i]+" ");
+      }
+    }
+}
