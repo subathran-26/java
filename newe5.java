@@ -5,9 +5,9 @@ class Person {
     int age;
     void getDetails(Scanner sc)
     {
-        System.out.print("Enter name: ");
+        System.out.print("Enter the name: ");
         name = sc.nextLine();
-        System.out.print("Enter age: ");
+        System.out.print("Enter the age: ");
         age = sc.nextInt();
     }
 
@@ -131,7 +131,7 @@ class BankAccount {
     }
 
     void showBalance() {
-        System.out.println("Balance: ₹" + balance);
+        System.out.println("Balance amount is: ₹" + balance);
     }
 }
 
