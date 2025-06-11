@@ -54,3 +54,58 @@ public class SalaryDemo {
         sc.close();
     }
 }
+------------------------------------------------------------
+
+2)
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int rollNo;
+    int mark1, mark2, mark3;
+
+
+    void getDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter student name: ");
+        name = sc.nextLine();
+
+        System.out.print("Enter roll number: ");
+        rollNo = sc.nextInt();
+
+        System.out.print("Enter mark 1: ");
+        mark1 = sc.nextInt();
+
+        System.out.print("Enter mark 2: ");
+        mark2 = sc.nextInt();
+
+        System.out.print("Enter mark 3: ");
+        mark3 = sc.nextInt();
+    }
+
+   
+    void displayResult() {
+        int total = mark1 + mark2 + mark3;
+        float average = total / 3f;
+
+        System.out.println("\n--- Student Result ---");
+        System.out.println("Name: " + name);
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Marks: " + mark1 + ", " + mark2 + ", " + mark3);
+        System.out.println("Total: " + total);
+        System.out.println("Average: " + average);
+
+        if (average >= 50) {
+            System.out.println("Result: Pass");
+        } else {
+            System.out.println("Result: Fail");
+        }
+    }
+}
+public class StudentManagement {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.getDetails();
+        s1.displayResult();
+    }
+}
