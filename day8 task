@@ -1,0 +1,217 @@
+day1 task:
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| day1               |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use day1;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table student_profile;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table student_profile(
+    -> regno varchar(10),
+    ->  name varchar(10),
+    ->     -> date_of_birth date,
+    ->
+    -> eg
+    -> dfg
+    -> df);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> date_of_birth date,
+
+eg
+dfg
+df)' at line 4
+mysql> create table student_profile(
+    -> regno varchar(10),
+    -> name varchar(10),
+    -> date_of_birth date,
+    -> department varchar(50));
+Query OK, 0 rows affected (0.04 sec
+mysql>  insert into Student_profile values('1','subathran','2006-05-26','information technology'),('2','sanjay','2006-06-06','information technology'),('3','prabhu','2006-05-26','information technology'),('4','nikash','2006-05-26','information technology'),('5','abhinav','2006-05-26','information technology');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from student_profile;
++-------+-----------+---------------+------------------------+
+| regno | name      | date_of_birth | department             |
++-------+-----------+---------------+------------------------+
+| 1     | subathran | 2006-05-26    | information technology |
+| 2     | sanjay    | 2006-06-06    | information technology |
+| 3     | prabhu    | 2006-05-26    | information technology |
+| 4     | nikash    | 2006-05-26    | information technology |
+| 5     | abhinav   | 2006-05-26    | information technology |
++-------+-----------+---------------+------------------------+
+5 rows in set (0.00 sec)
+
+mysql> create table marks(
+    -> regno varchar(10),
+    -> mark1 int,
+    -> mark2 int,
+    -> mark3 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>  insert into marks values('1',90,80,70),('2',20,50,40),('3',20,50,40),('4',20,60,40),('5',50,20,30);
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from marks;
++-------+-------+-------+-------+
+| regno | mark1 | mark2 | mark3 |
++-------+-------+-------+-------+
+| 1     |    90 |    80 |    70 |
+| 2     |    20 |    50 |    40 |
+| 3     |    20 |    50 |    40 |
+| 4     |    20 |    60 |    40 |
+| 5     |    50 |    20 |    30 |
++-------+-------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> update marks set total=mark1+mark2+mark3;
+ERROR 1054 (42S22): Unknown column 'total' in 'field list'
+mysql> alter table marks add column total int;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update marks set total=mark1+mark2+mark3;
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from marks;
++-------+-------+-------+-------+-------+
+| regno | mark1 | mark2 | mark3 | total |
++-------+-------+-------+-------+-------+
+| 1     |    90 |    80 |    70 |   240 |
+| 2     |    20 |    50 |    40 |   110 |
+| 3     |    20 |    50 |    40 |   110 |
+| 4     |    20 |    60 |    40 |   120 |
+| 5     |    50 |    20 |    30 |   100 |
++-------+-------+-------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc marks;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| regno | varchar(10) | YES  |     | NULL    |       |
+| mark1 | int         | YES  |     | NULL    |       |
+| mark2 | int         | YES  |     | NULL    |       |
+| mark3 | int         | YES  |     | NULL    |       |
+| total | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc student_profile;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| regno         | varchar(10) | YES  |     | NULL    |       |
+| name          | varchar(10) | YES  |     | NULL    |       |
+| date_of_birth | date        | YES  |     | NULL    |       |
+| department    | varchar(50) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show marks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks' at line 1
+mysql> show table marks;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'marks' at line 1
+mysql> select * from marks;
++-------+-------+-------+-------+-------+
+| regno | mark1 | mark2 | mark3 | total |
++-------+-------+-------+-------+-------+
+| 1     |    90 |    80 |    70 |   240 |
+| 2     |    20 |    50 |    40 |   110 |
+| 3     |    20 |    50 |    40 |   110 |
+| 4     |    20 |    60 |    40 |   120 |
+| 5     |    50 |    20 |    30 |   100 |
++-------+-------+-------+-------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student_profile;
++-------+-----------+---------------+------------------------+
+| regno | name      | date_of_birth | department             |
++-------+-----------+---------------+------------------------+
+| 1     | subathran | 2006-05-26    | information technology |
+| 2     | sanjay    | 2006-06-06    | information technology |
+| 3     | prabhu    | 2006-05-26    | information technology |
+| 4     | nikash    | 2006-05-26    | information technology |
+| 5     | abhinav   | 2006-05-26    | information technology |
++-------+-----------+---------------+------------------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table marks add column avg int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update marks set avg=total/2;
+Query OK, 5 rows affected (0.00 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from marks;
++-------+-------+-------+-------+-------+------+
+| regno | mark1 | mark2 | mark3 | total | avg  |
++-------+-------+-------+-------+-------+------+
+| 1     |    90 |    80 |    70 |   240 |  120 |
+| 2     |    20 |    50 |    40 |   110 |   55 |
+| 3     |    20 |    50 |    40 |   110 |   55 |
+| 4     |    20 |    60 |    40 |   120 |   60 |
+| 5     |    50 |    20 |    30 |   100 |   50 |
++-------+-------+-------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_day1  |
++-----------------+
+| marks           |
+| student_profile |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student_profile;
++-------+-----------+---------------+------------------------+
+| regno | name      | date_of_birth | department             |
++-------+-----------+---------------+------------------------+
+| 1     | subathran | 2006-05-26    | information technology |
+| 2     | sanjay    | 2006-06-06    | information technology |
+| 3     | prabhu    | 2006-05-26    | information technology |
+| 4     | nikash    | 2006-05-26    | information technology |
+| 5     | abhinav   | 2006-05-26    | information technology |
++-------+-----------+---------------+------------------------+
+5 rows in set (0.00 sec)
+
+mysql> delete from student_profile where regno=3;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student_profile;
++-------+-----------+---------------+------------------------+
+| regno | name      | date_of_birth | department             |
++-------+-----------+---------------+------------------------+
+| 1     | subathran | 2006-05-26    | information technology |
+| 2     | sanjay    | 2006-06-06    | information technology |
+| 4     | nikash    | 2006-05-26    | information technology |
+| 5     | abhinav   | 2006-05-26    | information technology |
++-------+-----------+---------------+------------------------+
+4 rows in set (0.00 sec)
+
+mysql> truncate table student_details;
+ERROR 1146 (42S02): Table 'day1.student_details' doesn't exist
+mysql> truncate table student_profile;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from student_profile;
+Empty set (0.00 sec)
