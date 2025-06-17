@@ -1,0 +1,231 @@
+mysql> use day1;
+Database changed
+mysql> create table student_profile(
+    -> rollno int,
+    -> studentname varchar(10),
+    -> department varchar(10));
+Query OK, 0 rows affected (0.57 sec)
+mysql> desc student_profile;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| rollno      | int         | YES  |     | NULL    |       |
+| studentname | varchar(10) | YES  |     | NULL    |       |
+| department  | varchar(10) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.09 sec)
+mysql> insert into student_profile values(1,'sam','informationtechnology'),(2,'ram',computerscience'),(3,'bussinessaccountancy');
+    '> ^C
+mysql> insert into student_profile values(1,'sam','informationtechnology');
+ERROR 1406 (22001): Data too long for column 'department' at row 1
+mysql> insert into student_profile values(1,'sam','it\');
+    '> ^C
+mysql>  insert into student_profile values(1,'sam','it');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into student_profile values(2,'ram','bca'),(3,'john','cs');
+Query OK, 2 rows affected (0.14 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+mysql> select * from student_profile;
++--------+-------------+------------+
+| rollno | studentname | department |
++--------+-------------+------------+
+|      1 | suba         | it         |
+|      2 | rahul         | bca        |
+|      3 | john        | cs         |
++--------+-------------+------------+
+3 rows in set (0.00 sec)
+mysql> insert into student_profile values (4,'joe','biotech'),(5,'dolly','ct');
+Query OK, 2 rows affected (0.09 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+mysql> select * from student_profile;
++--------+-------------+------------+
+| rollno | studentname | department |
++--------+-------------+------------+
+|      1 | suba        | it         |
+|      2 | rahul         | bca        |
+|      3 | john        | cs         |
+|      4 | jamal         | biotech    |
+|      5 | dann       | ct         |
++--------+-------------+------------+
+5 rows in set (0.02 sec)
+
+mysql> update student_profile set course_fee='35000' where rollno='1';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_profile;
++--------+-------------+------------+------------+
+| rollno | studentname | department | course_fee |
++--------+-------------+------------+------------+
+|      1 | suba         | it         |      35000 |
+|      2 | rahul         | bcom        |       NULL |
+|      3 | john        | cs         |       NULL |
+|      4 | jamal         | biotech    |       NULL |
+|      5 | dann       | ct         |       NULL |
++--------+-------------+------------+------------+
+5 rows in set (0.00 sec)
+mysql> update student_profile set course_fee='35000' where rollno='1';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+mysql> select * from student_profile;
++--------+-------------+------------+------------+
+| rollno | studentname | department | course_fee |
++--------+-------------+------------+------------+
+|      1 | suba         | it         |      35000 |
+|      2 | rahul         | bca        |       NULL |
+|      3 | john        | cs         |       NULL |
+|      4 | jamal        | biotech    |       NULL |
+|      5 | dann       | ct         |       NULL |
++--------+-------------+------------+------------+
+5 rows in set (0.00 sec)
+mysql> update student_profile set course_fee='45000' where rollno='2';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student_profile set course_fee='50000' where rollno='3';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student_profile set course_fee='40000' where rollno='4';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student_profile set course_fee='30000' where rollno='5';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student_profile;
++--------+-------------+------------+------------+
+| rollno | studentname | department | course_fee |
++--------+-------------+------------+------------+
+|      1 | suba         | it         |      35000 |
+|      2 | rahul         | bca        |      45000 |
+|      3 | john        | cs         |      50000 |
+|      4 | jamal         | biotech    |      40000 |
+|      5 | dann       | ct         |      30000 |
++--------+-------------+------------+------------+
+5 rows in set (0.00 sec)
+mysql> create  table customer_details(
+    -> cust_id int,
+    -> cust_name varchar(255),
+    -> gende varchar(255),
+    -> mobile_no int(20));
+Query OK, 0 rows affected, 1 warning (1.29 sec)
+mysql> desc customer_details;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| cust_id   | int          | YES  |     | NULL    |       |
+| cust_name | varchar(255) | YES  |     | NULL    |       |
+| gende     | varchar(255) | YES  |     | NULL    |       |
+| mobile_no | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.11 sec)
+mysql> alter table customer_details drop column mobile_no;
+Query OK, 0 rows affected (0.80 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc customer_details;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| cust_id   | int          | YES  |     | NULL    |       |
+| cust_name | varchar(255) | YES  |     | NULL    |       |
+| gende     | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+mysql> alter table customer_details rename column gende to gender;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc customer_details;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| cust_id   | int          | YES  |     | NULL    |       |
+| cust_name | varchar(255) | YES  |     | NULL    |       |
+| gender    | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.07 sec)
+mysql> insert into customer_details values(001,'sam','male');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into customer_details values(002,'san','female');
+Query OK, 1 row affected (0.08 sec)
+mysql>  insert into customer_details values(003,'ram','male');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> desc customer_details;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| cust_id   | int          | YES  |     | NULL    |       |
+| cust_name | varchar(255) | YES  |     | NULL    |       |
+| gender    | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.12 sec)
+
+mysql> select * from customer_details;
++---------+-----------+--------+
+| cust_id | cust_name | gender |
++---------+-----------+--------+
+|       1 | suba       | male   |
+|       2 | suba       | female |
+|       3 | ruba       | male   |
++---------+-----------+--------+
+3 rows in set (0.05 sec)
+
+mysql> create table blood_group(
+    -> patientid int,
+    -> patient_name varchar(255),
+    -> blood_group varchar(255));
+Query OK, 0 rows affected (1.08 sec)
+
+mysql> insert into blood_group values(111,'anu','ab+');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into blood_group values(222,'abhi','ab+');
+Query OK, 1 row affected (0.11 sec)
+
+mmysql> insert into blood_group values(333,'swa','a+');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from blood_group;
++-----------+--------------+-------------+
+| patientid | patient_name | blood_group |
++-----------+--------------+-------------+
+|       111 | anu          | ab+         |
+|       222 | abhinaya     | ab+         |
+|       333 | swathi       | a+          |
++-----------+--------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> create table ipl_team(
+    -> jersey_no int,
+    -> player_name varchar(255),
+    -> team_name varchar(255));
+Query OK, 0 rows affected (1.01 sec)
+
+
+mysql> insert into ipl_team values(33,'hardik','mi');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into ipl_team values(07,'dhoni','csk');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into ipl_team values(18,'virat','rcb');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from ipl_team;
++-----------+-------------+-----------+
+| jersey_no | player_name | team_name |
++-----------+-------------+-----------+
+|        33 | pandya      | mi        |
+|         7 | pagal       | csk       |
+|        18 | siraj       | rcb       |
++-----------+-------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> exit;
+Fixed!Ok, I will c
